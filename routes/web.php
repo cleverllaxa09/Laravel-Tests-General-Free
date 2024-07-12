@@ -1,16 +1,19 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\PostController;
 
 // TASK: Add a route below to / URL
+Route::get("/", [UserController::class,"index"])->name("home");
+Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+Route::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
 
-Route::post('posts', [\App\Http\Controllers\PostController::class, 'store'])->name('posts.store');
-Route::put('posts/{post}', [\App\Http\Controllers\PostController::class, 'update'])->name('posts.update');
-
-Route::get('teams', [\App\Http\Controllers\TeamController::class, 'index'])->name('teams.index');
-Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users');
-Route::get('users/check_update/{name}/{email}', [\App\Http\Controllers\UserController::class, 'check_update'])->name('user');
+Route::get('/teams', [TeamController::class, 'index'])->name('teams.index');
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
+Route::get('/users/check_update/{name}/{email}', [UserController::class, 'check_update'])->name('user.update');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

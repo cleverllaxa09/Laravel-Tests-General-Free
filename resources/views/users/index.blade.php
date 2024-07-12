@@ -19,11 +19,15 @@
                         </thead>
                         {{-- Task: add the loop here to show users, or the row "No content" --}}
                         <tbody>
-                            <tr>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>{{ $user->created_at }}</td>
+                            @foreach ($users as $user)
+                            <tr class="border  border-spacing-2">
+                                <td class=" border ">{{ $user->name }}</td>
+                                <td class=" border ">{{ $user->email }}</td>
+                                <td class=" border ">{{ $user->created_at }}</td>
                             </tr>
+                            @endforeach
+                  
+                      
                         </tbody>
                     </table>
                 </div>

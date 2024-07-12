@@ -19,6 +19,6 @@ class UserController extends Controller
         //   if not found, create a user with $name, $email and random password
         $user = NULL; // updated or created user
 
-        return $user->name;
+        return ;
     }
 }
